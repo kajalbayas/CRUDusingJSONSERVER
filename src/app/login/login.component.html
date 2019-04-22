@@ -1,0 +1,42 @@
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-6 login-form-1">
+      <h3>Sign In </h3>
+
+
+      <form [formGroup]="empform" (onSubmit)="signin()">
+        <div class="row form-group">
+          <label>Email_id :</label>
+          <span class="glyphicon glyphicon-user"></span>
+          <input type="text" name="email_id" class="form-control" formControlName="email_id"
+            placeholder="pleaase enter emailid here">
+          <!---<div *ngIf="(email_id.dirty && email_id.touched)" class="error-msg">
+            <div [hidden]="empform.controls['email_id'].errors.required">Email is required.
+
+            </div>
+          </div>-->
+        </div>
+        <br>
+
+
+        <div class="row form-group">
+          <label>Password :</label>
+          
+          <input type="password" name="userpassword" class="form-control" formControlName="userpassword"
+            placeholder="pleaase enter password here">
+          <!---<div *ngIf="empform.controls['userpassword'].dirty && empform.controls['userpassword'].touched"
+            class="error-msg">
+            <div [hidden]="empform.controls['userpassword'].errors.required">Password is required.
+
+            </div>
+          </div>-->
+        </div>
+
+        <div class="row form-group">
+
+          <button type="submit" class="btn btn-primary" (click)="authenticate()">Log In </button>
+        </div>
+
+      </form>
+    </div>
+  </div>

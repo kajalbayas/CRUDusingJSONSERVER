@@ -1,0 +1,120 @@
+
+
+<div class="row form-group">
+    <div class="col-md-4">
+      <li class="nav-item">
+                <a  class="nav-link" [routerLink]="'/emp/newemp'">Add New Employee  </a>
+       </li>
+
+    </div>
+  </div>
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-6">
+
+
+      <form [formGroup]="employeeform" (ngSubmit)="saveOrUpdate(employeeform)">
+        <div class="row form-group">
+          <div class="col-md-4"><label>ID:</label></div>
+          <div class="col-md-6"><input type="number"  formControlName="id" class="form-control"  [(ngModel)]="selectedProduct.id">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-4"> <label>Employee Name:</label></div>
+          <div class="col-md-6"><input type="text" formControlName="name" class="form-control" [(ngModel)]="selectedProduct.name"></div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4"> <label>City:</label></div>
+          <div class="col-md-6"><input type="text" formControlName="city" class="form-control"  [(ngModel)]="selectedProduct.city"></div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4"><label>Designation:</label></div>
+          <div class="col-md-6"><input type="text"  formControlName="designation" class="form-control"  [(ngModel)]="selectedProduct.designation"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4"*ngIf="isUpdate==false"><button  type="submit" class="btn btn-primary">Save</button></div>
+      </div>
+      <div class="row">
+          <div class="col-md-4" *ngIf="isUpdate"><button type="buttton"  class="btn btn-secondary" (click)="update(employeeform)">Update</button></div>
+      </div>
+
+      </form>
+    </div>
+  </div>
+
+
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-4">
+    <table class="table table-stripped table-hover ">
+      <thead>
+        <th>ID:</th>
+        <th>Name:</th>
+        <th>City:</th>
+        <th>Designation:</th>
+        
+      </thead>
+     
+      <tbody>
+        <tr *ngFor="let empdetails of emp" (click)="getproductdetail(empdetails.id)">
+          <td><a [routerLink]="['newemp',empdetails.id]" (click)="getselectedid(empdetails.id)">{{empdetails.id}}</a></td>
+          <td>{{empdetails.name | uppercase}}</td>
+          <td>{{empdetails.city | uppercase}}</td>
+          <td>{{empdetails.designation| uppercase}}</td>
+          
+          <td>
+              <button class="btn btn-secondary" (click)="edit(empdetails.id)">Edit</button>
+           </td>
+
+
+           <td>
+              <button class="btn btn-primary" (click)="delete(empdetails.id)">Delete</button>
+            </td>
+     
+          </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+</div>
+</div>
+
+
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+
+</div>
+
+
+<!---<div class="row">
+  <div class="col-md-6">      
+    <table class="table"> 
+      
+        <tr>
+            <td>Id</td>
+            <td>{{selectedProduct.id}}</td>
+          </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{selectedProduct.name}}</td>
+      </tr>
+      <tr>
+        <td>City</td>
+        <td>{{selectedProduct.city}}</td>
+      </tr>
+      <tr>
+        <td>Designation</td>
+        <td>{{selectedProduct.designation}}</td>
+      </tr>   
+     
+      
+    </table>
+  </div>
+</div>-->  
+
+
